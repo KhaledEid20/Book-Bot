@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace BookBot.Repository.Base
 {
-    public class IUnitOfWork
+    public interface IUnitOfWork  : IDisposable
     {
-        
+        IBookRepo book {get;}
+        IAuthorRepo author {get;}
     }
 }
