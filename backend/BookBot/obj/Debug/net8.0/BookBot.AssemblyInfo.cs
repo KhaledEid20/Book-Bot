@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1d21971bdf5b6a8fe8c4e85051de723cea3ce89")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad82f74ce013a79b3c535f95146c1b01ebd30fde")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

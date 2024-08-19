@@ -245,3 +245,5 @@ B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\refint\BookBot.dll
 B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\BookBot.pdb
 B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\BookBot.genruntimeconfig.cache
 B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\ref\BookBot.dll
+B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\AutoMapper.dll
+B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

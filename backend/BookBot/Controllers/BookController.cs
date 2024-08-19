@@ -19,9 +19,9 @@ namespace BookBot.Controllers
             _unit = Unit;
         }
         [HttpGet("GetBook")]
-        public IActionResult getBook()
+        public async Task<ActionResult<BookDto>> GetBook(string Name , string? Pd = null)
         {
-            return View();
+            return  Ok( await _unit.book.GetBookAsync(Name , Pd));
         }
     }
 }

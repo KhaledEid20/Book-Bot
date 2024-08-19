@@ -3,6 +3,9 @@ global using BookBot;
 global using BookBot.Repository;
 global using BookBot.Repository.Base;
 global using BookBot.Models;
+global using BookBot.DTOs;
+global using AutoMapper;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -14,6 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddScoped<IUnitOfWork , Unitofwork>();
 builder.Services.AddScoped<IAuthorRepo, AuthorRepo>();
 builder.Services.AddScoped<IBookRepo , BookRepo>();
@@ -21,6 +25,7 @@ builder.Services.AddScoped<IBookRepo , BookRepo>();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
 
