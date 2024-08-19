@@ -13,12 +13,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IUnitOfWork , Unitofwork>();
+builder.Services.AddScoped<IAuthorRepo, AuthorRepo>();
+builder.Services.AddScoped<IBookRepo , BookRepo>();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-    
-builder.Services.AddSingleton<IUnitOfWork , Unitofwork>();
-builder.Services.AddSingleton<IAuthorRepo, AuthorRepo>();
-builder.Services.AddSingleton<IBookRepo , BookRepo>();
 
 
 var app = builder.Build();

@@ -19,5 +19,6 @@ namespace BookBot.Models
         public string? BookName {get; set;}
         public string? publishDate {get; set;}
         public decimal Rate{get; set;}
+        public byte[]? ImageData { get; set; }
     }
 }
