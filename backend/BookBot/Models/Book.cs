@@ -18,7 +18,9 @@ namespace BookBot.Models
         public BookGenre GenreId {get; set;}
         public string BookName {get; set;} = string.Empty;
         public string publishDate {get; set;}= string.Empty;
+        public string Language {get;set;}= string.Empty;
         public decimal Rate{get; set;}
         public byte[]? ImageData { get; set; }
+
     }
 }

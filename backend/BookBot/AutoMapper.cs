@@ -11,10 +11,12 @@ namespace BookBot
     {
         public AutoMapper()
         {
-            CreateMap<Book,BookDto>()
+            CreateMap<Book, BookDto>()
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.AuthorName))
-                .ForMember(dest => dest.Genre , opt => opt.MapFrom( src => src.GenreId.ToString()));
-            
+                .ForMember(dest => dest.Genre, opt => opt.MapFrom(src => src.GenreId));
+            CreateMap<AddBook, Book>()
+            .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.AuthorId))
+            .ForMember(dest => dest.GenreId, opt => opt.MapFrom(src => src.Genre));
 
         }
     }

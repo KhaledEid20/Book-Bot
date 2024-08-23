@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Odbc;
 using System.Linq;
 using System.Threading.Tasks;
 using BookBot.DTOs;
@@ -12,35 +13,82 @@ namespace BookBot.Repository
         public BookRepo(AppDbContext context , IMapper mapper) : base(context)
         {
             this._mapper = mapper;
-        } 
+        }
+        public async Task<string> addBook(BookDto book)
+        {
+            var result = _mapper.Map<Book>(book);
+            try{
+
+                _context.Books.Add(result);
+                await _context.SaveChangesAsync();
+            }
+            catch(Exception e){
+                Console.WriteLine(e);
+            }
+            return "New Book Added";
+        }
         public async Task<BookDto> GetBookAsync(string name, string? Pd = null)
         {
             string LowerName = name.ToLower();
             Book? result = null;
-            if(Pd == null){ // if the user didn't provide a publish date
-                try{
-                     result = await _context.Books.SingleOrDefaultAsync(nm => nm.BookName.ToLower() == LowerName);
+
+            try
+            {
+                if (Pd == null)
+                {
+                    result = await _context.Books
+                        .Include(b => b.Author)
+                        .SingleOrDefaultAsync(nm => nm.BookName.ToLower() == LowerName);
                 }
-                catch(Exception e){
-                    Console.WriteLine(e);
+                else
+                {
+                    result = await _context.Books
+                        .Include(b => b.Author)
+                        .SingleOrDefaultAsync(book => book.BookName.ToLower() == LowerName && book.publishDate == Pd);
                 }
             }
-            else{ // if the user provide a publish date
-                try
-                {
-                    result = await (from book in _context.Books
-                            where book.BookName.ToLower() == LowerName && book.publishDate == Pd
-                            select book).SingleOrDefaultAsync();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
-            var bookdto = result != null?  _mapper.Map<BookDto>(result) : null;
-            return bookdto;
+
+            // Map the Book entity to BookDto
+            var bookDto = result != null ? _mapper.Map<BookDto>(result) : null;
+            return bookDto;
         }
+        public async Task<BookDto> GetBookDeepSearch(string name, BookGenre genre, string lang, string? pd = null)
+        {
+            Book? result = null;
 
+            try
+            {
+                if (pd == null)
+                {
+                    result = await _context.Books
+                        .Include(b => b.Author) // Include related Author entity
+                        .SingleOrDefaultAsync(book =>
+                            book.Language.ToLower() == lang.ToLower() &&
+                            book.GenreId == genre &&
+                            book.BookName.ToLower() == name.ToLower());
+                }
+                else
+                {
+                    result = await _context.Books
+                        .Include(b => b.Author) // Include related Author entity
+                        .SingleOrDefaultAsync(book =>
+                            book.Language.ToLower() == lang.ToLower() &&
+                            book.GenreId == genre &&
+                            book.BookName.ToLower() == name.ToLower() &&
+                            book.publishDate == pd);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
 
+            var final = result != null ? _mapper.Map<BookDto>(result) : null;
+            return final;
+        }
     }
 }

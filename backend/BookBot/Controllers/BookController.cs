@@ -23,5 +23,14 @@ namespace BookBot.Controllers
         {
             return  Ok( await _unit.book.GetBookAsync(Name , Pd));
         }
+
+        [HttpGet("SearchDeep")]
+        public async Task<ActionResult<BookDto>> SearchDeep(string Name, BookGenre genre, string Lang ,string Pd = null){
+            return Ok(await _unit.book.GetBookDeepSearch(Name , genre , Lang ,Pd));
+        }
+        [HttpPost("AddBook")]
+        public async Task<ActionResult<BookDto>> AddBook(BookDto book){
+            return Ok(await _unit.book.addBook(book));
+        }
     }
 }

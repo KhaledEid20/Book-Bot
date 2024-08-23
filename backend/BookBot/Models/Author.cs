@@ -13,6 +13,7 @@ namespace BookBot.Models
         public string AuthorName { get; set; } = String.Empty;
         public string birthDate{get; set;}= String.Empty;
         public string? deadDate{get; set;}
+        public string? Nationality{get; set;}
         public string brief{get; set;}= String.Empty;
     }
 }
