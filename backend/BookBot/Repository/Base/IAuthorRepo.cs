@@ -7,6 +7,6 @@ namespace BookBot.Repository.Base
 {
     public interface IAuthorRepo : IBaseRepo<Author>
     {
-        
+        Task<AuthorDTO> AuthorSearch(string name);
     }
 }

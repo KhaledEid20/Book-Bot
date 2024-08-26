@@ -12,25 +12,48 @@ namespace BookBot.Controllers
     [Route("api/[controller]")]
     public class BookController : Controller
     {
-        private IUnitOfWork _unit{get; set;}
+        private IUnitOfWork _unit { get; set; }
 
         public BookController(IUnitOfWork Unit)
         {
             _unit = Unit;
         }
+        #region getControllers
+
         [HttpGet("GetBook")]
-        public async Task<ActionResult<BookDto>> GetBook(string Name , string? Pd = null)
+        public async Task<ActionResult<BookDto>> GetBook(string Name, string? Pd = null)
         {
-            return  Ok( await _unit.book.GetBookAsync(Name , Pd));
+            return Ok(await _unit.book.GetBookAsync(Name, Pd));
         }
 
-        [HttpGet("SearchDeep")]
-        public async Task<ActionResult<BookDto>> SearchDeep(string Name, BookGenre genre, string Lang ,string Pd = null){
-            return Ok(await _unit.book.GetBookDeepSearch(Name , genre , Lang ,Pd));
+        [HttpGet("DeepSearch")]
+        public async Task<ActionResult<BookDto>> SearchDeep(string Name, BookGenre genre, string Lang, string Pd = null) {
+            return Ok(await _unit.book.GetBookDeepSearch(Name, genre, Lang, Pd));
         }
+        [HttpGet("getByGenre")]
+        public async Task<ActionResult<List<string>>> getAllbyGenre(BookGenre genre)
+        {
+            return Ok(await _unit.book.searchByGenre(genre));
+        }
+        [HttpGet("GetAllBooks")]
+
+        public async Task<ActionResult<List<Book>>> getAllBooks()
+        {
+            return Ok(await _unit.book.ReturnALlBooks());
+        }
+        #endregion
+        #region PostControllers
         [HttpPost("AddBook")]
-        public async Task<ActionResult<BookDto>> AddBook(BookDto book){
+        public async Task<ActionResult<BookDto>> AddBook(AddBook book) {
             return Ok(await _unit.book.addBook(book));
         }
+        #endregion
+        #region DeleteControllers
+        [HttpDelete("RemoveBook")]
+        public async Task<ActionResult<string>> RemoveBook(int id)
+        {
+            return Ok(await _unit.book.DeleteBook(id));
+        }
+        #endregion
     }
 }

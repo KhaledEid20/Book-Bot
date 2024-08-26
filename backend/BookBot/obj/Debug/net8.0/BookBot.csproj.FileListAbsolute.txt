@@ -124,10 +124,8 @@ B:\Projects\BookBot\obj\Debug\net8.0\ref\BookBot.dll
 B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\appsettings.Development.json
 B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\appsettings.json
 B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\BookBot.exe
-B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\BookBot.deps.json
-B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\BookBot.runtimeconfig.json
-B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\BookBot.dll
-B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\BookBot.pdb
+B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\AutoMapper.dll
+B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\EntityFramework.SqlServer.dll
 B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\EntityFramework.dll
 B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\Humanizer.dll
@@ -243,7 +241,9 @@ B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\BookBot.csproj.Up2Date
 B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\BookBot.dll
 B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\refint\BookBot.dll
 B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\BookBot.pdb
+B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\BookBot.deps.json
+B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\BookBot.runtimeconfig.json
+B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\BookBot.dll
+B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\BookBot.pdb
 B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\BookBot.genruntimeconfig.cache
 B:\Projects\BookBot\backend\BookBot\obj\Debug\net8.0\ref\BookBot.dll
-B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\AutoMapper.dll
-B:\Projects\BookBot\backend\BookBot\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

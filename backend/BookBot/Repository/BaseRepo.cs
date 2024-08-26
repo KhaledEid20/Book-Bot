@@ -13,6 +13,30 @@ namespace BookBot.Repository
         {
             this._context = context;
         }
-        
+        public async Task<List<Book>> ReturnALlBooks()
+        {
+            List<Book> result = null;
+            try
+            {
+                result = await _context.Books.ToListAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return result;
+        }
+        public async Task<List<Author>> ReturnAllAuthors()
+        {
+            List<Author> result = null;
+            try
+            {
+                result = await _context.Authors.ToListAsync();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+            }
+            return result;
+        }
     }
 }

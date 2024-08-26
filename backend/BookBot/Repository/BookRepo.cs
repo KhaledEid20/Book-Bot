@@ -1,9 +1,13 @@
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Linq;
 using System.Threading.Tasks;
 using BookBot.DTOs;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 
 namespace BookBot.Repository
 {
@@ -14,18 +18,22 @@ namespace BookBot.Repository
         {
             this._mapper = mapper;
         }
-        public async Task<string> addBook(BookDto book)
+        public async Task<string> addBook(AddBook book)
         {
-            var result = _mapper.Map<Book>(book);
-            try{
+            Book result = _mapper.Map<Book>(book);
 
+            try
+            {
                 _context.Books.Add(result);
                 await _context.SaveChangesAsync();
+
+                return $"New Book Added with ID: {result.BookId}";
             }
-            catch(Exception e){
+            catch (Exception e)
+            {
                 Console.WriteLine(e);
+                return "Error: Could not add the book.";
             }
-            return "New Book Added";
         }
         public async Task<BookDto> GetBookAsync(string name, string? Pd = null)
         {
@@ -90,5 +98,31 @@ namespace BookBot.Repository
             var final = result != null ? _mapper.Map<BookDto>(result) : null;
             return final;
         }
+        public async Task<List<string>> searchByGenre(BookGenre genre)
+        {
+            List<string> result = null;
+            try
+            {
+                 result = await (from i in _context.Books
+                                    where i.GenreId == genre
+                                    select i.BookName).ToListAsync();
+            }
+            catch (Exception e) { 
+                Console.WriteLine(e);
+            }
+            return result;
+        }
+        public async Task<string> DeleteBook(int id)
+        {
+            var result = await _context.Books.FindAsync(id);
+            if(result == null)
+            {
+                return "Book Not Existed";
+            }
+            _context.Remove(result);
+            _context.SaveChanges();
+            return "Book Deleted";
+        }
+        
     }
 }

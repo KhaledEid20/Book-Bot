@@ -7,6 +7,7 @@ namespace BookBot.Repository.Base
 {
     public interface IBaseRepo<T> where T :class
     {
-        
+        Task<List<Book>> ReturnALlBooks();
+        Task<List<Author>> ReturnAllAuthors();
     }
 }
