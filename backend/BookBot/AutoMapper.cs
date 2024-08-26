@@ -18,6 +18,7 @@ namespace BookBot
                 .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.AuthorId))
                 .ForMember(dest => dest.GenreId, opt => opt.MapFrom(src => src.Genre));
             CreateMap<Author, AuthorDTO>();
+            CreateMap<AuthorDTO, Author>();
         }
     }
 }
