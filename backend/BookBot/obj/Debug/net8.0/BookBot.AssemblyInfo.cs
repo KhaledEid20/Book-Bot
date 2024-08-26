@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d23e3b93b73519dd74fc1880b536268e7ddb3420")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+669f549148f4fc45b61614024302294bf7234ee4")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

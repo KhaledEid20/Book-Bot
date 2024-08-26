@@ -15,5 +15,6 @@ namespace BookBot.Models
         public string? deadDate{get; set;}
         public string? Nationality{get; set;}
         public string brief{get; set;}= String.Empty;
+        public byte[] Image { get; set; } = null;
     }
 }
