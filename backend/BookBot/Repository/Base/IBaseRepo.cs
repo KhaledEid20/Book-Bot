@@ -9,5 +9,6 @@ namespace BookBot.Repository.Base
     {
         Task<List<Book>> ReturnALlBooks();
         Task<List<Author>> ReturnAllAuthors();
+        Task<byte[]> EncodeImage(IFormFile image);
     }
 }

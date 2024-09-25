@@ -21,7 +21,7 @@ namespace BookBot.Repository
         public async Task<string> addBook(AddBook book)
         {
             Book result = _mapper.Map<Book>(book);
-
+            result.ImageData = await EncodeImage(book.ImageData);
             try
             {
                 _context.Books.Add(result);
@@ -62,6 +62,7 @@ namespace BookBot.Repository
 
             // Map the Book entity to BookDto
             var bookDto = result != null ? _mapper.Map<BookDto>(result) : null;
+            bookDto.ImageData = Convert.ToBase64String(result.ImageData);
             return bookDto;
         }
         public async Task<BookDto> GetBookDeepSearch(string name, BookGenre genre, string lang, string? pd = null)
@@ -96,6 +97,7 @@ namespace BookBot.Repository
             }
 
             var final = result != null ? _mapper.Map<BookDto>(result) : null;
+            final.ImageData = Convert.ToBase64String(result.ImageData);
             return final;
         }
         public async Task<List<string>> searchByGenre(BookGenre genre)

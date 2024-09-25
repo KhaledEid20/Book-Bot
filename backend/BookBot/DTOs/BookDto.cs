@@ -13,6 +13,6 @@ namespace BookBot.DTOs
         public string? publishDate {get; set;}
         public string Language {get;set;}= string.Empty;
         public decimal Rate{get; set;}
-        public byte[]? ImageData { get; set; }
+        public string ImageData { get; set; } = string.Empty;
     }
     }

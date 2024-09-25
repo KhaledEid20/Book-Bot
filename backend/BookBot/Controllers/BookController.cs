@@ -44,7 +44,7 @@ namespace BookBot.Controllers
         #endregion
         #region PostControllers
         [HttpPost("AddBook")]
-        public async Task<ActionResult<BookDto>> AddBook(AddBook book) {
+        public async Task<ActionResult<BookDto>> AddBook([FromForm]AddBook book) {
             return Ok(await _unit.book.addBook(book));
         }
         #endregion

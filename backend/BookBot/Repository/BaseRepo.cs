@@ -8,7 +8,7 @@ namespace BookBot.Repository
 {
     public class BaseRepo<T> : IBaseRepo<T> where T : class
     {
-        public  AppDbContext _context { get; set; }
+        public AppDbContext _context { get; set; }
         public BaseRepo(AppDbContext context)
         {
             this._context = context;
@@ -37,6 +37,18 @@ namespace BookBot.Repository
                 Console.WriteLine(e);
             }
             return result;
+        }
+        public async Task<byte[]> EncodeImage(IFormFile image)
+        {
+            if (image == null || image.Length == 0) {
+                return null;
+            }
+            byte[] im = null;
+            using (var ms = new MemoryStream()) { 
+                await image.CopyToAsync(ms);
+                im = ms.ToArray();
+            }
+            return im;
         }
     }
 }
